@@ -11,6 +11,16 @@ public class UserRegistration {
                 return "Invalid";
             }
         }
+
+    public String validateLastName (String lastName) {
+        if (lastName.matches(VALIDATE_NAME)) {
+            return "valid";
+        }
+        else {
+            return "Invalid";
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome to User Registration");
     }
