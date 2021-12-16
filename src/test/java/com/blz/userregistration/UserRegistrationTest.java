@@ -7,12 +7,12 @@ import org.junit.Test;
 
 public class UserRegistrationTest {
     @Before
-    public void setUp(){
+    public void setUp() {
         System.out.println("User Registration");
     }
 
     @AfterClass
-    public static void afterClass(){
+    public static void afterClass() {
         System.out.println("User Registration completed");
 
     }
@@ -90,6 +90,7 @@ public class UserRegistrationTest {
         String PhoneNo = validator.validatePhoneNumber("91 9919819801");
         Assert.assertEquals("valid", PhoneNo);
     }
+
     @Test
     public void whenGivenMobileNo_WithoutCountryCodeShouldReturnInvalid() {
         UserRegistration validator = new UserRegistration();
@@ -125,11 +126,12 @@ public class UserRegistrationTest {
         String password = validator.validatePasswordWithRule1("riya@hy");
         Assert.assertEquals("Invalid", password);
     }
-     // User Register the Upper case password
+
+    // User Register the Upper case password
     @Test
     public void whenGivenPassword_UpperCaseShouldReturnValid() {
         UserRegistration validator = new UserRegistration();
-        String password = validator.validatePasswordWithRule2("Riya@123");
+        String password = validator.validatePasswordWithRule2("rIya@123");
         Assert.assertEquals("valid", password);
     }
 
@@ -139,13 +141,20 @@ public class UserRegistrationTest {
         String password = validator.validatePasswordWithRule2("Raj@123");
         Assert.assertEquals("Invalid", password);
     }
+
     @Test
-    public void whenGivenPassword_WithoutUpperCaseShouldReturnInValid (){
+    public void whenGivenPassword_WithoutUpperCaseShouldReturnInValid() {
         UserRegistration validator = new UserRegistration();
         String password = validator.validatePasswordWithRule2("riya123");
         Assert.assertEquals("Invalid", password);
     }
 
+    @Test
+    public void whenGivenPassword_LastNumericNumberShouldReturnValid() {
+        UserRegistration validator = new UserRegistration();
+        String password = validator.validatePasswordWithRule3("Riya@123");
+        Assert.assertEquals("valid", password);
+    }
 }
 
 
