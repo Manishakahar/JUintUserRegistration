@@ -1,10 +1,11 @@
 package com.blz.userregistration;
 
 public class UserRegistration {
+    public String VALIDATE_NAME = "^[A-Z]{1}[a-z]{2,}$";
+    public String VALIDATE_EMAIL = "^[a-z0-9]{3,20}([_+.-][a-z0-9]+)?@[a-z0-9]+.[a-z]{2,3}(.[a-z]{2})?$";
+    public String VALIDATE_PASSWORD_WITH_RULE_1 = "^(?=.[a-zA-Z0-9]).{8,}$";
+    public String VALIDATE_PHONE_NUMBER = "^[1-9]{2}( )[0-9]{10}$";
 
-    String VALIDATE_NAME = "^[A-Z]{1}[a-z]{2,}$";
-    String VALIDATE_EMAIL = "^[a-z0-9]{3,20}([_+.-][a-z0-9]+)?@[a-z0-9]+.[a-z]{2,3}(.[a-z]{2})?$";
-    String  VALIDATE_PASSWORD_WITH_RULE_1= "^(?=.[a-zA-Z0-9]).{8,}$";
     public String validateFirstName(String firstName) {
         if (firstName.matches(VALIDATE_NAME)) {
             return "valid";
@@ -28,11 +29,19 @@ public class UserRegistration {
             return "Invalid";
         }
     }
-    public String validatePassword(String Password){
-        if (Password.matches(VALIDATE_PASSWORD_WITH_RULE_1)){
+
+    public String validatePassword(String Password) {
+        if (Password.matches(VALIDATE_PASSWORD_WITH_RULE_1)) {
             return "valid";
+        } else {
+            return "Invalid";
         }
-        else {
+    }
+
+    public String validatePhoneNumber(String PhoneNo) {
+        if (PhoneNo.matches(VALIDATE_PHONE_NUMBER)) {
+            return "valid";
+        } else {
             return "Invalid";
         }
     }

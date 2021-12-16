@@ -98,4 +98,28 @@ public class UserRegistrationTest {
         String password = validator.validatePassword("riya@hy");
         Assert.assertEquals("Invalid", password);
     }
+    // User Register Phone Number
+
+    @Test
+    public void whenGivenPhoneNumber_Valid() {
+        UserRegistration validator = new UserRegistration();
+        String PhoneNo = validator.validatePhoneNumber("91 9919819801");
+        Assert.assertEquals("valid", PhoneNo);
+    }
+    @Test
+    public void whenGivenMobileNo_WithoutCountryCodeShouldReturnInvalid() {
+        UserRegistration validator = new UserRegistration();
+        String PhoneNo = validator.validatePhoneNumber("+ 9919819801");
+        Assert.assertEquals("Invalid", PhoneNo);
+    }
+
+    @Test
+    public void whenGivenMobileNo_WithoutSpaceShouldReturnInvalid() {
+        UserRegistration validator = new UserRegistration();
+        String PhoneNo = validator.validatePhoneNumber("+919919819801");
+        Assert.assertEquals("Invalid", PhoneNo);
+    }
 }
+
+
+
