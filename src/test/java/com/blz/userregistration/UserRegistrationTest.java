@@ -14,7 +14,6 @@ public class UserRegistrationTest {
     @AfterClass
     public static void afterClass() {
         System.out.println("User Registration completed");
-
     }
 
     // User Register Fast Name
@@ -155,6 +154,20 @@ public class UserRegistrationTest {
         String password = validator.validatePasswordWithRule3("Riya@123");
         Assert.assertEquals("valid", password);
     }
+
+    @Test
+    public void whenGivenPassword_SpecialCharacterShouldReturnValid() {
+        UserRegistration validator = new UserRegistration();
+        String password = validator.validatePasswordWithRule4("Riya#123");
+        Assert.assertEquals("valid", password);
+    }
+    @Test
+    public void whenGivenPassword_WithoutSpecialCharacterShouldReturnIValid() {
+        UserRegistration validator = new UserRegistration();
+        String password = validator.validatePasswordWithRule4("rIya123");
+        Assert.assertEquals("Invalid", password);
+    }
+
 }
 
 
