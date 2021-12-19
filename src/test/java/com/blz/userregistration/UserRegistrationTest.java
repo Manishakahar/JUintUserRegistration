@@ -69,7 +69,7 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void whenGivenEmail_WithoutatSignShouldReturnInvalid() {
+    public void whenGivenEmail_WithoutSignShouldReturnInvalid() {
         UserRegistration validator = new UserRegistration();
         String Email = validator.validateEmailID("abc.xyz.bl.co.in");
         Assert.assertEquals("Invalid", Email);
