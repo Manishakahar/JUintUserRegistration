@@ -33,7 +33,7 @@ public class ParameterisedEmailTest {
     }
 
     @Test
-    public void givenEmailId_WithEmailId_ShouldPassedAllTest() {
+    public void givenEmailId_WithEmailId_ShouldPassedAllTest() throws UserRegistrationException {
         UserRegistration validator = new UserRegistration();
         String actualResult = validator.validateEmailID(this.emailId);
         String expectedResult = "valid";
