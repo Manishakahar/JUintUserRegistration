@@ -11,64 +11,64 @@ public class UserRegistration {
 
     public String validateFirstName(String firstName) {
         if (firstName.matches(VALIDATE_NAME)) {
-            return "valid";
+            return "happy";
         } else {
-            return "Invalid";
+            return "sad";
         }
     }
 
     public String validateLastName(String lastName) {
         if (lastName.matches(VALIDATE_NAME)) {
-            return "valid";
+            return "happy";
         } else {
-            return "Invalid";
+            return "sad";
         }
     }
 
     public String validateEmailID(String Email) {
         if (Email.matches(VALIDATE_EMAIL)) {
-            return "valid";
+            return "happy";
         } else {
-            return "Invalid";
+            return "sad";
         }
     }
 
     public String validatePasswordWithRule1(String Password) {
         if (Password.matches(VALIDATE_PASSWORD_WITH_RULE_1)) {
-            return "valid";
+            return "happy";
         } else {
-            return "Invalid";
+            return "sad";
         }
     }
 
     public String validatePhoneNumber(String PhoneNo) {
         if (PhoneNo.matches(VALIDATE_PHONE_NUMBER)) {
-            return "valid";
+            return "happy";
         } else {
-            return "Invalid";
+            return "sad";
         }
     }
 
     public String validatePasswordWithRule2(String Password) {
         if (Password.matches(VALIDATE_PASSWORD_WITH_RULE_2)) {
-            return "valid";
+            return "happy";
         } else {
-            return "Invalid";
+            return "sad";
         }
     }
 
     public String validatePasswordWithRule3(String Password) {
         if (Password.matches(VALIDATE_PASSWORD_WITH_RULE_3)) {
-            return "valid";
+            return "happy";
         } else {
-            return "Invalid";
+            return "sad";
         }
     }
     public String validatePasswordWithRule4(String Password) {
         if (Password.matches(VALIDATE_PASSWORD_WITH_RULE_4)) {
-            return "valid";
+            return "happy";
         } else {
-            return "Invalid";
+            return "sad";
         }
     }
 

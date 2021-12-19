@@ -21,21 +21,21 @@ public class UserRegistrationTest {
     public void whenGivenFirstName_ShouldHaveMinimum3CharWithCamelCase() {
         UserRegistration validator = new UserRegistration();
         String firstName = validator.validateFirstName("Manisha");
-        Assert.assertEquals("valid", firstName);
+        Assert.assertEquals("happy", firstName);
     }
 
     @Test
     public void whenGivenFirstName_WithSmallLetter() {
         UserRegistration validator = new UserRegistration();
         String firstName = validator.validateFirstName("manisha");
-        Assert.assertEquals("Invalid", firstName);
+        Assert.assertEquals("sad", firstName);
     }
 
     @Test
     public void whenGivenFirstName_WithOtherLetterCapital() {
         UserRegistration validator = new UserRegistration();
         String firstName = validator.validateFirstName("mANisha");
-        Assert.assertEquals("Invalid", firstName);
+        Assert.assertEquals("sad", firstName);
     }
 
     // User Register Last Name
@@ -43,21 +43,21 @@ public class UserRegistrationTest {
     public void whenGivenLastName_ShouldHaveMinimum3CharWithCamelCase() {
         UserRegistration validator = new UserRegistration();
         String lastName = validator.validateFirstName("Kahar");
-        Assert.assertEquals("valid", lastName);
+        Assert.assertEquals("happy", lastName);
     }
 
     @Test
     public void whenGivenLastName_WithSmallLetter() {
         UserRegistration validator = new UserRegistration();
         String lastName = validator.validateLastName("kahar");
-        Assert.assertEquals("Invalid", lastName);
+        Assert.assertEquals("sad", lastName);
     }
 
     @Test
     public void whenGivenLastName_WithOtherLetterCapital() {
         UserRegistration validator = new UserRegistration();
         String lastName = validator.validateFirstName("KAhar");
-        Assert.assertEquals("Invalid", lastName);
+        Assert.assertEquals("sad", lastName);
     }
 
     // User Register Email-id
@@ -65,21 +65,21 @@ public class UserRegistrationTest {
     public void whenGivenEmail_Valid() {
         UserRegistration validator = new UserRegistration();
         String Email = validator.validateEmailID("abc.xyz@bl.co.in");
-        Assert.assertEquals("valid", Email);
+        Assert.assertEquals("happy", Email);
     }
 
     @Test
     public void whenGivenEmail_WithoutSignShouldReturnInvalid() {
         UserRegistration validator = new UserRegistration();
         String Email = validator.validateEmailID("abc.xyz.bl.co.in");
-        Assert.assertEquals("Invalid", Email);
+        Assert.assertEquals("sad", Email);
     }
 
     @Test
     public void whenGivenEmail_StartWithDotShouldReturnInvalid() {
         UserRegistration validator = new UserRegistration();
         String Email = validator.validateEmailID(".1abc.xyz@bl.co.in");
-        Assert.assertEquals("Invalid", Email);
+        Assert.assertEquals("sad", Email);
     }
 
     // User Register Phone Number
@@ -87,21 +87,21 @@ public class UserRegistrationTest {
     public void whenGivenPhoneNumber_Valid() {
         UserRegistration validator = new UserRegistration();
         String PhoneNo = validator.validatePhoneNumber("91 9919819801");
-        Assert.assertEquals("valid", PhoneNo);
+        Assert.assertEquals("happy", PhoneNo);
     }
 
     @Test
     public void whenGivenMobileNo_WithoutCountryCodeShouldReturnInvalid() {
         UserRegistration validator = new UserRegistration();
         String PhoneNo = validator.validatePhoneNumber("+ 9919819801");
-        Assert.assertEquals("Invalid", PhoneNo);
+        Assert.assertEquals("sad", PhoneNo);
     }
 
     @Test
     public void whenGivenMobileNo_WithoutSpaceShouldReturnInvalid() {
         UserRegistration validator = new UserRegistration();
         String PhoneNo = validator.validatePhoneNumber("+919919819801");
-        Assert.assertEquals("Invalid", PhoneNo);
+        Assert.assertEquals("sad", PhoneNo);
     }
 
     // User Register Password
@@ -109,21 +109,21 @@ public class UserRegistrationTest {
     public void whenGivenPassword_Valid() {
         UserRegistration validator = new UserRegistration();
         String password = validator.validatePasswordWithRule1("Riya@123");
-        Assert.assertEquals("valid", password);
+        Assert.assertEquals("happy", password);
     }
 
     @Test
     public void whenGivenPassword_LessThan8CharacterShouldReturnInValid() {
         UserRegistration validator = new UserRegistration();
         String password = validator.validatePasswordWithRule1("Raj@123");
-        Assert.assertEquals("Invalid", password);
+        Assert.assertEquals("sad", password);
     }
 
     @Test
     public void whenGivenPassword_WithoutIntegerCaseShouldReturnInvalid() {
         UserRegistration validator = new UserRegistration();
         String password = validator.validatePasswordWithRule1("riya@hy");
-        Assert.assertEquals("Invalid", password);
+        Assert.assertEquals("sad", password);
     }
 
     // User Register the Upper case password
@@ -131,41 +131,41 @@ public class UserRegistrationTest {
     public void whenGivenPassword_UpperCaseShouldReturnValid() {
         UserRegistration validator = new UserRegistration();
         String password = validator.validatePasswordWithRule2("rIya@123");
-        Assert.assertEquals("valid", password);
+        Assert.assertEquals("happy", password);
     }
 
     @Test
     public void whenGivenPassword_UpperCaseLessThan8CharacterShouldReturnInValid() {
         UserRegistration validator = new UserRegistration();
         String password = validator.validatePasswordWithRule2("Raj@123");
-        Assert.assertEquals("Invalid", password);
+        Assert.assertEquals("sad", password);
     }
 
     @Test
     public void whenGivenPassword_WithoutUpperCaseShouldReturnInValid() {
         UserRegistration validator = new UserRegistration();
         String password = validator.validatePasswordWithRule2("riya123");
-        Assert.assertEquals("Invalid", password);
+        Assert.assertEquals("sad", password);
     }
 
     @Test
     public void whenGivenPassword_LastNumericNumberShouldReturnValid() {
         UserRegistration validator = new UserRegistration();
         String password = validator.validatePasswordWithRule3("Riya@123");
-        Assert.assertEquals("valid", password);
+        Assert.assertEquals("happy", password);
     }
 
     @Test
     public void whenGivenPassword_SpecialCharacterShouldReturnValid() {
         UserRegistration validator = new UserRegistration();
         String password = validator.validatePasswordWithRule4("Riya#123");
-        Assert.assertEquals("valid", password);
+        Assert.assertEquals("happy", password);
     }
     @Test
     public void whenGivenPassword_WithoutSpecialCharacterShouldReturnIValid() {
         UserRegistration validator = new UserRegistration();
         String password = validator.validatePasswordWithRule4("rIya123");
-        Assert.assertEquals("Invalid", password);
+        Assert.assertEquals("sad", password);
     }
 
 }

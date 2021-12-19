@@ -37,7 +37,6 @@ public class ParameterisedEmailTest {
         UserRegistration validator = new UserRegistration();
         String actualResult = validator.validateEmailID(this.emailId);
         String expectedResult = "valid";
-       // String  actualResult = validator.validateEmailID("abc.xyz@bl.co.in");
         Assert.assertEquals(expectedResult, actualResult);
     }
 }
