@@ -30,19 +30,19 @@ public class ParameterisedPasswordTest {
     }
 
     @Test
-    public void givenEmailId_WithEmailId_ShouldPassedAllTest() throws UserRegistrationException {
-        UserRegistration validator = new UserRegistration();
-        String actualResult = validator.validatePasswordWithRule(this.password);
+    public void givenPassword_whenPasswordCorrect_ShouldReturnPassedAllTest() throws UserRegistrationException {
+        UserRegistration userRegistration = new UserRegistration();
+        String actualResult =userRegistration .validatePasswordWithRule.iValidator(this.password);
         String expectedResult = "valid";
         Assert.assertEquals(expectedResult, actualResult);
     }
 
     // User register password in case of Empty value
     @Test
-    public void whenGivenPassword_WithoutSignShouldReturnEmptyValue(){
+    public void givenPassword_whenWithoutSignShouldReturnEmptyValue(){
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.validatePasswordWithRule("");
+            UserRegistration userRegistration = new UserRegistration();
+            userRegistration.validatePasswordWithRule.iValidator("");
         } catch (UserRegistrationException userRegistrationException) {
             Assert.assertEquals("Please enter the Password", userRegistrationException.message);
         }
@@ -50,14 +50,13 @@ public class ParameterisedPasswordTest {
 
     // User register password in case of Null value
     @Test
-    public void whenGivenPassword_StartWithDotShouldReturnNullValue() throws UserRegistrationException {
+    public void givenPassword_whenStartWithDotShouldReturnNullValue() throws UserRegistrationException {
         try {
-            UserRegistration validator = new UserRegistration();
-            validator.validatePasswordWithRule(null);
+            UserRegistration userRegistration = new UserRegistration();
+            userRegistration.validatePasswordWithRule.iValidator(null);
         } catch (NullPointerException nullPointerException) {
             Assert.assertNotEquals("valid", nullPointerException.getMessage());
         }
     }
-
 }
 

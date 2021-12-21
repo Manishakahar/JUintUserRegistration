@@ -1,13 +1,13 @@
 package com.blz.userregistration;
 
-public class UserRegistration {
+public class UserRegistration implements IValidator {
     public String VALIDATE_NAME = "^[A-Z]{1}[a-z]{2,}$";
     public String VALIDATE_EMAIL = "^[a-z0-9]{3,20}([_+.-][a-z0-9]+)?@[a-z0-9]+.[a-z]{2,3}(.[a-z]{2})?$";
     public String VALIDATE_PHONE_NUMBER = "^[1-9]{2}( )[0-9]{10}$";
     public String VALIDATE_PASSWORD_WITH_RULE = "^([a-zA-Z0-9])?.{8,}$";
 
     // First Name
-    public String validateFirstName(String firstName) throws UserRegistrationException {
+    public IValidator validateFirstName = (firstName) -> {
         try {
             if (firstName.length() == 0) {
                 throw new UserRegistrationException("Please enter the First name", UserRegistrationException.ExceptionType.EMPTY);
@@ -20,10 +20,10 @@ public class UserRegistration {
         } catch (NullPointerException exception) {
             throw new NullPointerException(exception.getMessage());
         }
-    }
+    };
 
     // Last Name
-    public String validateLastName(String lastName) throws UserRegistrationException {
+    public IValidator validateLastName = (lastName) -> {
         try {
             if (lastName.length() == 0) {
                 throw new UserRegistrationException("Please enter the Last name", UserRegistrationException.ExceptionType.EMPTY);
@@ -36,10 +36,10 @@ public class UserRegistration {
         } catch (NullPointerException exception) {
             throw new NullPointerException(exception.getMessage());
         }
-    }
+    };
 
     // Email-Id
-    public String validateEmailID(String Email) throws UserRegistrationException {
+    public IValidator validateEmailID = (Email) -> {
         try {
             if (Email.length() == 0) {
                 throw new UserRegistrationException("Please enter the Email-id", UserRegistrationException.ExceptionType.EMPTY);
@@ -52,9 +52,8 @@ public class UserRegistration {
         } catch (NullPointerException exception) {
             throw new NullPointerException(exception.getMessage());
         }
-    }
-
-    public String validatePasswordWithRule(String Password) throws UserRegistrationException {
+    };
+    public IValidator validatePasswordWithRule = (Password) -> {
         try {
             if (Password.length() == 0) {
                 throw new UserRegistrationException("Please enter the Password", UserRegistrationException.ExceptionType.EMPTY);
@@ -67,9 +66,9 @@ public class UserRegistration {
         } catch (NullPointerException exception) {
             throw new NullPointerException(exception.getMessage());
         }
-    }
+    };
 
-    public String validatePhoneNumber(String PhoneNo) throws UserRegistrationException {
+    public IValidator validatePhoneNumber = (PhoneNo) -> {
         try {
             if (PhoneNo.length() == 0) {
                 throw new UserRegistrationException("Please enter the PhoneNo", UserRegistrationException.ExceptionType.EMPTY);
@@ -82,6 +81,11 @@ public class UserRegistration {
         } catch (NullPointerException exception) {
             throw new NullPointerException(exception.getMessage());
         }
+    };
+
+    @Override
+    public String iValidator(String value) throws UserRegistrationException {
+        return null;
     }
 }
 
