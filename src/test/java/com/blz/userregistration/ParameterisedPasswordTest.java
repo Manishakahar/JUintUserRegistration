@@ -8,24 +8,22 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class ParameterisedEmailTest {
-    public String emailId;
+public class ParameterisedPasswordTest {
+    public String password;
     public boolean expectedResult;
 
-    public ParameterisedEmailTest(String emailId, boolean expectedResult) {
-        this.emailId = emailId;
+    public ParameterisedPasswordTest(String password, boolean expectedResult) {
+        this.password = password;
         this.expectedResult = expectedResult;
     }
 
     @Parameterized.Parameters
-   public static Collection ExpectedResult() {
+    public static Collection expectedResult() {
         return Arrays.asList(new Object[][]{
-                {"abc.xyz@blz.com.in", true},
-                {"abc.xyz@blzin.com", true},
-                {"abc@blz.com", true},
-                {"abc@xyz@gmail.com", false},
-                {"abc@gmail.com", true},
-                {"abc", false},
+                {"Riya@1234", true},
+                {"riya@.com1M", true},
+                {"Abc%123d", true},
+                {"raj@123455", false},
                 {"abc@blz", false},
 
         });
@@ -34,31 +32,32 @@ public class ParameterisedEmailTest {
     @Test
     public void givenEmailId_WithEmailId_ShouldPassedAllTest() throws UserRegistrationException {
         UserRegistration validator = new UserRegistration();
-        String actualResult = validator.validateEmailID(this.emailId);
+        String actualResult = validator.validatePasswordWithRule(this.password);
         String expectedResult = "valid";
         Assert.assertEquals(expectedResult, actualResult);
     }
 
-    // User Register Email-id in case of Empty value
+    // User register password in case of Empty value
     @Test
-    public void whenGivenEmail_WithoutSignShouldReturnEmptyValue(){
+    public void whenGivenPassword_WithoutSignShouldReturnEmptyValue(){
         try {
             UserRegistration validator = new UserRegistration();
-            validator.validateEmailID("");
+            validator.validatePasswordWithRule("");
         } catch (UserRegistrationException userRegistrationException) {
-            Assert.assertEquals("Please enter the Email-id", userRegistrationException.message);
+            Assert.assertEquals("Please enter the Password", userRegistrationException.message);
         }
     }
 
-    // User register Email-id in case null value
+    // User register password in case of Null value
     @Test
-    public void whenGivenEmail_StartWithDotShouldReturnNullValue() throws UserRegistrationException {
+    public void whenGivenPassword_StartWithDotShouldReturnNullValue() throws UserRegistrationException {
         try {
             UserRegistration validator = new UserRegistration();
-            validator.validateEmailID(null);
+            validator.validatePasswordWithRule(null);
         } catch (NullPointerException nullPointerException) {
             Assert.assertNotEquals("valid", nullPointerException.getMessage());
         }
     }
+
 }
 

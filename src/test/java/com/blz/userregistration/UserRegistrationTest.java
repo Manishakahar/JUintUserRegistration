@@ -108,29 +108,6 @@ public class UserRegistrationTest {
         }
     }
 
-    // User Register Email-id in case of Empty value
-    @Test
-    public void whenGivenEmail_WithoutSignShouldReturnEmptyValue() throws UserRegistrationException {
-        try {
-            UserRegistration validator = new UserRegistration();
-            validator.validateEmailID("");
-        } catch (UserRegistrationException userRegistrationException) {
-            Assert.assertEquals("Please enter the Email-id", userRegistrationException.message);
-        }
-    }
-
-    // User register Email-id in case null value
-    @Test
-    public void whenGivenEmail_StartWithDotShouldReturnNullValue() throws UserRegistrationException {
-        try {
-            UserRegistration validator = new UserRegistration();
-            validator.validateEmailID(null);
-        } catch (NullPointerException nullPointerException) {
-            Assert.assertNotEquals("valid", nullPointerException.getMessage());
-        }
-    }
-
-
     // User Register Phone Number is valid
     @Test
     public void whenGivenPhoneNumber_Valid() throws UserRegistrationException {
@@ -189,28 +166,6 @@ public class UserRegistrationTest {
             validator.validatePasswordWithRule("abc.xyz.bl.co.in");
         } catch (UserRegistrationException userRegistrationException) {
             Assert.assertEquals("Please enter valid password", userRegistrationException.message);
-        }
-    }
-
-    // User register password in case of Empty value
-    @Test
-    public void whenGivenPassword_WithoutSignShouldReturnEmptyValue() throws UserRegistrationException {
-        try {
-            UserRegistration validator = new UserRegistration();
-            validator.validatePasswordWithRule("");
-        } catch (UserRegistrationException userRegistrationException) {
-            Assert.assertEquals("Please enter the Password", userRegistrationException.message);
-        }
-    }
-
-    // User register password in case of Null value
-    @Test
-    public void whenGivenPassword_StartWithDotShouldReturnNullValue() throws UserRegistrationException {
-        try {
-            UserRegistration validator = new UserRegistration();
-            validator.validatePasswordWithRule(null);
-        } catch (NullPointerException nullPointerException) {
-            Assert.assertNotEquals("valid", nullPointerException.getMessage());
         }
     }
 }
